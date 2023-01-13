@@ -1,5 +1,5 @@
-import Game from "./game/Game.js";
-import GameView from "./game/GameView.js";
+import Game from "./game/game.js";
+import GameView from "./game/gameView.js";
 
 
 
