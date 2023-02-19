@@ -1,5 +1,11 @@
 const app = document.getElementById('app');
 
+const routes = {
+  '/': home,
+  '/post': post,
+  '/about': about
+};
+
 const home = () => {
   app.innerHTML = `
     <h1>Welcome to My Blog!</h1>
@@ -7,7 +13,6 @@ const home = () => {
   `;
 }
 
-// post 함수
 const post = () => {
   app.innerHTML = `
     <h1>블로그 포스트</h1>
@@ -26,7 +31,6 @@ const post = () => {
   `;
 };
 
-// about 함수
 const about = () => {
   app.innerHTML = `
     <h1>블로그 소개</h1>
@@ -36,24 +40,15 @@ const about = () => {
   `;
 };
 
-function notFound() {
+const notFound = () => {
   const content = document.getElementById("app");
   content.innerHTML = "<h2>404 Not Found</h2>";
 }
 
-// routes 객체를 정의합니다.
-const routes = {
-  '/': home,
-  '/post': post,
-  '/about': about
-};
-
-// 브라우저의 location 객체를 이용해 현재 URL을 가져오는 함수입니다.
 const getCurrentUrl = () => {
   return location.pathname;
 };
 
-// 현재 URL에 해당하는 페이지를 렌더링하는 함수입니다.
 const renderPage = () => {
   const url = getCurrentUrl();
   const routeFunc = routes[url];
@@ -64,20 +59,24 @@ const renderPage = () => {
   }
 };
 
-// 페이지가 로드될 때마다 현재 URL에 해당하는 페이지를 렌더링합니다.
-window.addEventListener('load', renderPage);
 
-// 네비게이션 메뉴를 클릭할 때마다 현재 URL에 해당하는 페이지를 렌더링합니다.
-const navItems = document.querySelectorAll('.nav-item');
-navItems.forEach(item => {
-  item.addEventListener('click', event => {
-    event.preventDefault();
-    const url = event.target.getAttribute('href');
-    history.pushState(null, '', url);
-    renderPage();
+const addNavEvent = () =>{
+  const navItems = document.querySelectorAll('.nav-item');
+
+  navItems.forEach(item => {
+    item.addEventListener('click', event => {
+      event.preventDefault();
+      const url = item.getAttribute('href');
+      history.pushState(null, null, url);
+      renderPage();
+    });
   });
-});
+}
 
-// 브라우저의 뒤로 가기/앞으로 가기 버튼을 클릭할 때마다 현재 URL에 해당하는 페이지를 렌더링합니다.
-window.addEventListener('popstate', renderPage);
 
+const init = () => {
+  renderPage();
+  addNavEvent();
+}
+
+init();
