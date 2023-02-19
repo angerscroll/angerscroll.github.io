@@ -28,6 +28,11 @@ nav ul li a {
   text-decoration: none;
 }
 
+nav a.active {
+  background-color: #fff;
+  color: #333;
+}
+
 main {
   padding: 20px;
 }
