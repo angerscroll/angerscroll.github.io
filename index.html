@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>My Blog</title>
-        <link rel="stylesheet" href="./css/index.css">
-  </head>
+        <title>SPA 블로그</title>
+        <link rel="stylesheet"  type="text/css"  href="./css/index.css">
+    </head>
     <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="/" class="nav-item">Home</a></li>
-                    <li><a href="/post" class="nav-item">Post</a></li>
-                    <li><a href="/about" class="nav-item">About Us</a></li>
-                </ul>
-            </nav>
-        </header>
+        <nav>
+            <a href="/" id="home-link">Home</a>
+            <a href="/posts" id="posts-link">Posts</a>
+            <a href="/about" id="about-link">About</a>
+        </nav>
         <div id="app"></div>
-        <footer></footer>
         <script type="module" src="./js/index.js"></script>
     </body>
 </html>
