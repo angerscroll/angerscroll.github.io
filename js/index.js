@@ -18,5 +18,7 @@ const router = async () => {
   await route.after_render();
 };
 
-window.addEventListener('hashchange', router);
-window.addEventListener('load', router);
+window.addEventListener("popstate", () => {
+  router();
+});
+
