@@ -1,17 +1,10 @@
-import Game from "./game/game.js";
-import GameView from "./game/gameView.js";
+const app = document.getElementById('app');
 
-
-
-console.log('index.js')
-
-const row = 5;
-const cell =5;
-const bn  = `1111100000111110000011111`;
-
-const gameStart  = new Game({row,cell});
-let gameView = new GameView(document.getElementById("app"));
-
-gameView.onTileClick = i => {
-  console.log(`Tile clicked : ${i}`);
+function render() {
+  app.innerHTML = `
+    <h1>Welcome to My Blog!</h1>
+    <p>This is a sample SPA page using vanilla JavaScript.</p>
+  `;
 }
+
+render();
