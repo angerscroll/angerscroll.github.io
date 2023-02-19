@@ -1,11 +1,5 @@
 const app = document.getElementById('app');
 
-const routes = {
-  '/': home,
-  '/post': post,
-  '/about': about
-};
-
 const home = () => {
   app.innerHTML = `
     <h1>Welcome to My Blog!</h1>
@@ -38,6 +32,12 @@ const about = () => {
     <p>HTML, CSS, JavaScript로만 구성되어 있으며, 프레임워크는 사용하지 않았습니다.</p>
     <p>Node.js를 이용해 서버를 구성하였으며, 히스토리 API를 사용하여 브라우저의 URL이 변경될 때 페이지를 렌더링합니다.</p>
   `;
+};
+
+const routes = {
+  '/': home,
+  '/post': post,
+  '/about': about
 };
 
 const notFound = () => {
