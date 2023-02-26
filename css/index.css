@@ -26,6 +26,7 @@ ul li {
   justify-content: center;
   align-items: center;
   outline: none;
+  user-select: none;
 }
 
 .ul {
