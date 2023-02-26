@@ -49,6 +49,6 @@ ul li {
 
 @media screen and (max-width : 850px) {
   .content {
-    width: 80vw;
+    width: 90vw;
   }
 }
