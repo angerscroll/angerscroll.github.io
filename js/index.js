@@ -1,24 +1,52 @@
-// index.js
+import larr from "./file.js";
 
-import Home from "./components/home.js";
-import Posts from "./components/posts.js";
-import About from "./components/about.js";
+const app = document.getElementById("app");
 
-const routes = {
-  '/': Home,
-  '/posts': Posts,
-  '/about': About
-};
+const searchBar = document.querySelector(".searchBar");
 
-const router = async () => {
-  const content = document.getElementById('app');
-  const request = location.pathname;
-  const route = routes[request] ? routes[request] : Error404;
-  content.innerHTML = await route.render();
-  await route.after_render();
-};
+const listBar = document.querySelector(".listBar");
 
-window.addEventListener("popstate", () => {
-  router();
-});
+const action = () => {
+  const result = generateRandomNumbers(larr);
+
+  // result.forEach(e => {
+  //   let text = e.toString();
+  //   console.log(text);
+  //   contents+`<div></div>`;
+  // });
+
+  let newDiv = document.createElement('div');
+  newDiv.setAttribute('type','text');
+  newDiv.textContent=result.toString();
+  listBar.appendChild(newDiv);
+
+
+}
+
+const generateRandomNumbers = (numbers,count) => {
+  let result = [];
+  const arrResult = [];
+  const cnt = count || 1;
+  for(let i = 0 ;i<cnt;i++){
+    while (result.length < 6) {
+      const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
+      if (!result.includes(randomNumber)) {
+        result.push(randomNumber); 
+      }
+    }
+    arrResult.push(result);
+    result = [];
+  }
+  if(cnt==1) return arrResult[0];
+  return arrResult;
+}
+
+const init = () => {
+  searchBar.addEventListener("click",action);
+  if (!larr) alert('gg');
+
+}
+
+init();
+
 
