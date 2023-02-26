@@ -1,5 +1,6 @@
 import larr from "./file.js";
 
+
 const app = document.getElementById("app");
 
 const searchBar = document.querySelector(".searchBar");
@@ -16,11 +17,18 @@ const action = () => {
   // });
 
   let newDiv = document.createElement('div');
-  newDiv.setAttribute('type','text');
-  newDiv.textContent=result.toString();
+  newDiv.setAttribute('class','ul');
+
+  result.forEach(e => {
+    const content = e;
+    let innerDiv = document.createElement('div');
+    innerDiv.setAttribute('type','text');
+    innerDiv.setAttribute('class','li_num');
+    innerDiv.textContent= content;
+    newDiv.appendChild(innerDiv);
+  })
+
   listBar.appendChild(newDiv);
-
-
 }
 
 const generateRandomNumbers = (numbers,count) => {
@@ -48,5 +56,4 @@ const init = () => {
 }
 
 init();
-
 
